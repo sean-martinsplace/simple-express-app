@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My France Vacation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f9f5f0;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #002395, #ED2939);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 33.33%;
+      height: 100%;
+      background: #002395;
+      opacity: 0.3;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 33.33%;
+      height: 100%;
+      background: #ED2939;
+      opacity: 0.3;
+    }
+
+    header h1 {
+      font-size: 3em;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    header p {
+      font-size: 1.3em;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+      opacity: 0.9;
+    }
+
+    nav {
+      background: #002395;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+      padding: 5px 15px;
+      border-radius: 20px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .intro h2 {
+      font-size: 2em;
+      color: #002395;
+      margin-bottom: 15px;
+    }
+
+    .intro p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #555;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .destinations {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .card-emoji {
+      font-size: 4em;
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(135deg, #f0f4ff, #fff0f2);
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-body h3 {
+      font-size: 1.4em;
+      color: #002395;
+      margin-bottom: 10px;
+    }
+
+    .card-body p {
+      color: #666;
+      line-height: 1.7;
+      font-size: 0.95em;
+    }
+
+    .highlights {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 60px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .highlights h2 {
+      font-size: 1.8em;
+      color: #002395;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .highlight-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      list-style: none;
+    }
+
+    .highlight-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 15px;
+      background: #f9f5f0;
+      border-radius: 8px;
+      font-size: 0.95em;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .highlight-list li span.icon {
+      font-size: 1.5em;
+      flex-shrink: 0;
+    }
+
+    .tips {
+      background: linear-gradient(135deg, #002395, #1a3a8f);
+      color: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 60px;
+    }
+
+    .tips h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .tip {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .tip h4 {
+      font-size: 1em;
+      margin-bottom: 8px;
+      color: #ffd700;
+    }
+
+    .tip p {
+      font-size: 0.9em;
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #1a1a2e;
+      color: #aaa;
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9em;
+    }
+
+    footer span {
+      color: #ED2939;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2em; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>&#x1F1EB;&#x1F1F7; My France Vacation</h1>
+    <p>An unforgettable journey through the heart of Europe</p>
+  </header>
+
+  <nav>
+    <a href="#destinations">Destinations</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#tips">Travel Tips</a>
+  </nav>
+
+  <div class="container">
+
+    <section class="intro">
+      <h2>Bonjour, France!</h2>
+      <p>
+        From the romantic streets of Paris to the sun-drenched vineyards of Bordeaux,
+        my trip through France was everything I had dreamed of and more. Here's a
+        look at the places I visited, the food I savored, and the memories I made.
+      </p>
+    </section>
+
+    <section id="destinations">
+      <h2 style="font-size:1.8em; color:#002395; margin-bottom:30px; text-align:center;">Places I Visited</h2>
+      <div class="destinations">
+
+        <div class="card">
+          <div class="card-emoji">&#x1F5FC;</div>
+          <div class="card-body">
+            <h3>Paris</h3>
+            <p>
+              The City of Light never disappoints. I climbed the Eiffel Tower at sunset,
+              wandered through the Louvre, and strolled along the Seine. Every corner
+              felt like a painting come to life.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-emoji">&#x1F3F0;</div>
+          <div class="card-body">
+            <h3>Loire Valley</h3>
+            <p>
+              A fairy-tale landscape dotted with grand chateaux. Visiting Chambord and
+              Chenonceau felt like stepping back into the Renaissance, surrounded by
+              immaculate gardens and history.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-emoji">&#x1F377;</div>
+          <div class="card-body">
+            <h3>Bordeaux</h3>
+            <p>
+              Wine country at its finest. I toured renowned vineyards, tasted world-class
+              Merlots and Cabernets, and enjoyed fresh oysters from Arcachon Bay just
+              an hour away.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-emoji">&#x1F3D6;&#xFE0F;</div>
+          <div class="card-body">
+            <h3>French Riviera</h3>
+            <p>
+              Nice, Cannes, and Monaco — the Riviera is pure glamour. Crystal-clear
+              Mediterranean waters, vibrant markets, and gorgeous coastal scenery made
+              this the perfect final stop.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-emoji">&#x26F0;&#xFE0F;</div>
+          <div class="card-body">
+            <h3>Mont Saint-Michel</h3>
+            <p>
+              An island abbey rising dramatically from the sea — truly one of the most
+              breathtaking sights in all of France. Visiting at high tide felt almost
+              otherworldly.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-emoji">&#x1F96E;</div>
+          <div class="card-body">
+            <h3>Lyon</h3>
+            <p>
+              Considered the gastronomic capital of France, Lyon's traditional bouchons
+              served up unforgettable quenelles, saucisson, and tarte aux pralines.
+              A must for any food lover.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="highlights" class="highlights">
+      <h2>Trip Highlights</h2>
+      <ul class="highlight-list">
+        <li><span class="icon">&#x1F969;</span> Savored a traditional French dinner with coq au vin and crème brûlée</li>
+        <li><span class="icon">&#x1F5BC;&#xFE0F;</span> Saw the Mona Lisa and Venus de Milo at the Louvre</li>
+        <li><span class="icon">&#x1F6A2;</span> Took a riverboat cruise along the Seine at dusk</li>
+        <li><span class="icon">&#x1F6B4;</span> Cycled through the vineyards of Burgundy</li>
+        <li><span class="icon">&#x1F9C0;</span> Visited a cheese market in Normandy</li>
+        <li><span class="icon">&#x1F3A8;</span> Explored the artists' quarter of Montmartre</li>
+        <li><span class="icon">&#x1F30A;</span> Watched the tide roll in around Mont Saint-Michel</li>
+        <li><span class="icon">&#x2615;</span> Enjoyed café au lait and croissants every morning</li>
+      </ul>
+    </section>
+
+    <section id="tips" class="tips">
+      <h2>Travel Tips</h2>
+      <div class="tips-grid">
+        <div class="tip">
+          <h4>Best Time to Visit</h4>
+          <p>April–June and September–October offer mild weather and fewer crowds than peak summer.</p>
+        </div>
+        <div class="tip">
+          <h4>Getting Around</h4>
+          <p>The TGV high-speed rail connects major cities quickly. In Paris, the Metro is fast and affordable.</p>
+        </div>
+        <div class="tip">
+          <h4>Language</h4>
+          <p>Learning a few basic French phrases goes a long way. Locals appreciate the effort, even a simple "Bonjour!"</p>
+        </div>
+        <div class="tip">
+          <h4>Food & Dining</h4>
+          <p>Lunch is often the biggest meal. Look for the "plat du jour" (dish of the day) for great value at local bistros.</p>
+        </div>
+        <div class="tip">
+          <h4>Book Ahead</h4>
+          <p>Reserve tickets for the Eiffel Tower, Louvre, and popular chateaux in advance to skip long queues.</p>
+        </div>
+        <div class="tip">
+          <h4>Currency</h4>
+          <p>France uses the Euro. Credit cards are widely accepted, but keep some cash for markets and small cafes.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Made with <span>&#x2665;</span> after an amazing trip to France &mdash; <em>Vive la France!</em></p>
+  </footer>
+
+</body>
+</html>
